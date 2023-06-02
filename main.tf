@@ -100,7 +100,7 @@ module "db_ingress" {
 module "rotation_lambda" {
   count   = local.rotation ? 1 : 0
   source  = "terraform-aws-modules/lambda/aws"
-  version = "~> 2.0"
+  version = "~> 4.0"
 
   function_name = local.name
   handler       = coalesce(var.rotation_lambda_handler, local.default_lambda_handler)
