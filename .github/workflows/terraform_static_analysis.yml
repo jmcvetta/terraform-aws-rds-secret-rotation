@@ -23,5 +23,5 @@ jobs:
         uses: bridgecrewio/checkov-action@master
         with:
           quiet: true
-          skip_path: examples/
-          skip-path: examples/
+          skip_path: examples
+          skip-path: examples
