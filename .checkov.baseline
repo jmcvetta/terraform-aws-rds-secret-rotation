@@ -1,0 +1,27 @@
+{
+    "failed_checks": [
+        {
+            "file": "/examples/postgresql/main.tf",
+            "findings": [
+                {
+                    "resource": "aws_rds_cluster.postgresql",
+                    "check_ids": [
+                        "CKV2_AWS_27",
+                        "CKV2_AWS_8",
+                        "CKV_AWS_139",
+                        "CKV_AWS_162",
+                        "CKV_AWS_313",
+                        "CKV_AWS_324",
+                        "CKV_AWS_327"
+                    ]
+                },
+                {
+                    "resource": "aws_security_group.rds",
+                    "check_ids": [
+                        "CKV_AWS_23"
+                    ]
+                }
+            ]
+        }
+    ]
+}
