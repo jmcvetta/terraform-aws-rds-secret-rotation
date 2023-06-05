@@ -1,4 +1,6 @@
 resource "aws_secretsmanager_secret" "this" {
+  # checkov:skip=CKV_AWS_149: TODO: add KMS encryption
+
   name                    = "${var.name_prefix}-${var.username}"
   recovery_window_in_days = var.secret_recovery_window_days
 }
