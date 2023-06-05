@@ -34,7 +34,8 @@ module "rotation_lambda" {
   policy_jsons           = local.lambda_policies
   number_of_policy_jsons = length(local.lambda_policies)
 
-  source_path = [
+  build_in_docker = true
+  source_path     = [
     {
       path             = "${path.module}/requirements/requirements.txt"
       pip_requirements = true,
