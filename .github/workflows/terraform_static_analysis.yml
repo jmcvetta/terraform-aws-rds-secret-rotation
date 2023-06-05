@@ -8,8 +8,8 @@ on:
 
 jobs:
 
-  checkov_baseline:
-    name: Baseline Static Analysis
+  checkov:
+    name: Static Analysis
     runs-on: ubuntu-latest
     strategy:
       fail-fast: true
@@ -18,7 +18,7 @@ jobs:
 
       - uses: actions/checkout@v2
 
-      - name: Checkov baseline static analysis
+      - name: Checkov static analysis
         id: checkov
         uses: bridgecrewio/checkov-action@master
         with:
