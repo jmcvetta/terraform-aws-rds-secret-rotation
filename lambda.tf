@@ -1,7 +1,7 @@
 module "rotation_lambda" {
   count   = local.rotation ? 1 : 0
   source  = "terraform-aws-modules/lambda/aws"
-  version = "~> 2.0"
+  version = "~> 4.0"
 
   function_name = local.name
   handler       = coalesce(var.rotation_lambda_handler, local.default_lambda_handler)
@@ -10,11 +10,14 @@ module "rotation_lambda" {
   tags          = var.tags
   publish       = true
   memory_size   = 128
-  layers        = var.rotation_lambda_layers
 
-  vpc_security_group_ids = [module.lambda_security_group[0].security_group_id]
-  vpc_subnet_ids         = var.rotation_lambda_subnet_ids
-  attach_network_policy  = true
+  #  layers        = var.rotation_lambda_layers
+
+  vpc_security_group_ids = [
+    module.lambda_security_group[0].security_group_id
+  ]
+  vpc_subnet_ids        = var.rotation_lambda_subnet_ids
+  attach_network_policy = true
 
   environment_variables = merge(var.rotation_lambda_env_variables, local.default_lambda_env_vars)
 
@@ -32,6 +35,10 @@ module "rotation_lambda" {
   number_of_policy_jsons = length(local.lambda_policies)
 
   source_path = [
+    {
+      path             = "${path.module}/requirements/requirements.txt"
+      pip_requirements = true,
+    },
     {
       path             = "${path.module}/functions/${local.function_name}"
       pip_requirements = false
