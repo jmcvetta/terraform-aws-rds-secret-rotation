@@ -119,3 +119,9 @@ variable "role_permissions_boundary" {
   type        = string
   default     = null
 }
+
+variable "function_name" {
+  type        = string
+  description = "Name of the Lambda function to use (see `functions` folder)"
+  nullable    = false
+}
