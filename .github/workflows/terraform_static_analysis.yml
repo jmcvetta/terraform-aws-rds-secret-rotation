@@ -24,3 +24,4 @@ jobs:
         with:
           quiet: true
           skip_path: examples/
+          skip-path: examples/
