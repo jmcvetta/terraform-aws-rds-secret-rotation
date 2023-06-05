@@ -22,6 +22,5 @@ jobs:
         id: checkov
         uses: bridgecrewio/checkov-action@master
         with:
-          baseline: .checkov.baseline
           quiet: true
           skip_path: examples/
